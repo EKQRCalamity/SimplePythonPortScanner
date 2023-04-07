@@ -29,7 +29,7 @@ def isOpen(port):
 if __name__ == '__main__':
     openports = [];
     with concurrent.futures.ProcessPoolExecutor() as executor:
-        for port, open in zip(range(1000), executor.map(isOpen, range(1000))):
+        for port, open in zip(range(65535), executor.map(isOpen, range(65535))):
             if open: print("Port " + str(port) + " | " + str(open));
             if open == True: openports.append(port);
     if len(openports) > 0:
